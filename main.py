@@ -32,7 +32,14 @@ class LoginApp(ctk.CTk):
         loginLabel = ctk.CTkLabel(master=self.loginFrame, text="Login System")
         loginLabel.pack(pady=12, padx=10)
 
-        # User Input
+        # User Input 
+        usernameLabel = ctk.CTkLabel(
+            master=self.loginFrame, 
+            text="Username",
+            font=("Arial", 12)
+            )
+        usernameLabel.pack(pady=0, padx=10)
+
         usernameEntry = ctk.CTkEntry(
             master=self.loginFrame,
             placeholder_text="Username",
@@ -40,7 +47,14 @@ class LoginApp(ctk.CTk):
         )
         usernameEntry.pack(pady=12, padx=10)
 
-        # Password Input
+        # Password Input 
+        passwordLabel = ctk.CTkLabel(
+            master=self.loginFrame, 
+            text="Password",
+            font=("Arial", 12)
+            )
+        passwordLabel.pack(pady=0, padx=10)
+
         passwordEntry = ctk.CTkEntry(
             master=self.loginFrame,
             placeholder_text="Password",
