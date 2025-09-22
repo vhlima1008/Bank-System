@@ -34,7 +34,7 @@ class LoginApp(ctk.CTk):
         ctk.set_default_color_theme("dark-blue")
         self.title("Digital Bank")
         self.geometry("880x560")  # window size when start
-        self.minsize(720, 480)
+        self.minsize(800, 560)
         self.configure(fg_color=PRIMARY_BG)
 
         # Variables
@@ -359,7 +359,7 @@ class LoginApp(ctk.CTk):
     # ---------------------- Events ----------------------
     def onLoginClicked(self):
         user = self.usernameVar.get().strip()
-        pwd  = self.passwordVar.get().strip()
+        pwd  = hash(self.passwordVar.get().strip())
         # Clean Old Messages
         if self._login_error_lbl:
             self._login_error_lbl.configure(text="")
@@ -367,6 +367,7 @@ class LoginApp(ctk.CTk):
 
         if user and pwd:
             self.createDashboardFrame()
+            print(user, pwd)
         else:
             # Unique Error Message
             self._login_error_lbl.configure(text="Usuário e senha obrigatórios.", text_color=ALERT_RED_SOFT)
