@@ -1,4 +1,7 @@
 import customtkinter as ctk
+from datetime import datetime
+
+DATE_FMT = "%Y-%m-%d %H:%M:%S"
 
 # ---------------------- Theme/Colors ----------------------
 PRIMARY_BG = "#353941"   # Main Background
@@ -41,6 +44,8 @@ class LoginApp(ctk.CTk):
         self.usernameVar = ctk.StringVar()
         self.passwordVar = ctk.StringVar()
         self.accountVar  = 0.0
+        self.extractVar = []
+        self.dateTimeVar = datetime.now().strftime(DATE_FMT)
 
         # References for Hide/Show
         self._login_error_lbl = None
@@ -284,6 +289,8 @@ class LoginApp(ctk.CTk):
                 if val <= 0:
                     raise ValueError
                 self.accountVar += val
+                self.extractVar.append(f'{self.dateTimeVar} | Depósito R${val} | Saldo R${self.accountVar}')
+                print(self.extractVar)
                 self.balanceLbl.configure(text=f"R$ {self.accountVar:,.2f}")
                 self._render_feedback("Depósito realizado com sucesso.")
             except Exception:
@@ -314,6 +321,8 @@ class LoginApp(ctk.CTk):
                 if val <= 0 or val > self.accountVar:
                     raise ValueError
                 self.accountVar -= val
+                self.extractVar.append(f'{self.dateTimeVar} | Saque R${val} | Saldo R${self.accountVar}')
+                print(self.extractVar)
                 self.balanceLbl.configure(text=f"R$ {self.accountVar:,.2f}")
                 self._render_feedback("Saque realizado com sucesso.")
             except Exception:
@@ -330,11 +339,18 @@ class LoginApp(ctk.CTk):
         card.grid(row=0, column=0, padx=8, pady=8, sticky="nsew")
         card.grid_columnconfigure(0, weight=1)
 
-        ctk.CTkLabel(card, text="Extrato (demo)", text_color=TEXT, font=self.font_h3
+        ctk.CTkLabel(card, text="Extrato", text_color=TEXT, font=self.font_h3
                      ).grid(row=0, column=0, padx=16, pady=(16, 8), sticky="w")
-        ctk.CTkLabel(card, text="Ainda não há lançamentos disponíveis nesta demonstração.",
-                     text_color=TEXT, font=self.font_sm
-                     ).grid(row=1, column=0, padx=16, pady=(0, 16), sticky="w")
+        
+        if len(self.extractVar) != 0:
+            box = ctk.CTkTextbox(card, width=300, height=200, text_color=TEXT, font=self.font_md, fg_color=SURFACE_BG)
+            box.grid(row=1, column=0, padx=16, pady=(0, 16), sticky="nsew")
+
+            for i in self.extractVar:
+                box.insert("end", f"{i}\n")
+        else:
+            ctk.CTkLabel(card, text="Nenhum movimento.", text_color=TEXT, font=self.font_md, fg_color=SURFACE_BG
+                           ).grid(row=1, column=0, padx=16, pady=(0, 16), sticky="nsew")
 
     def showFinancing(self):
         self._clear_dynamic()
