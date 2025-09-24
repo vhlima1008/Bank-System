@@ -109,3 +109,23 @@ class DashboardFrame(ctk.CTkFrame):
 
         ctk.CTkButton(self.dynamicArea, text="Confirmar", command=do_deposit).pack(pady=10)
 
+    def showWithdraw(self):
+        self._clear_dynamic()
+        entry = ctk.CTkEntry(self.dynamicArea, placeholder_text="Valor do saque")
+        entry.pack(pady=10)
+
+        def do_withdraw():
+            try:
+                val = float(entry.get())
+                self.account.withdraw(val)
+                self.balanceLbl.configure(text=f"R$ {self.account.balance:,.2f}")
+                self.showExtract()
+            except Exception as e:
+                ctk.CTkLabel(self.dynamicArea, text=f"Erro: {e}", text_color="red").pack()
+
+        ctk.CTkButton(self.dynamicArea, text="Confirmar", command=do_withdraw).pack(pady=10)
+
+    def showExtract(self):
+        self._clear_dynamic()
+        for mov in self.account.get_extract():
+            ctk.CTkLabel(self.dynamicArea, text=mov, text_color=TEXT).pack(anchor="w")
