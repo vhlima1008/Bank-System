@@ -32,7 +32,7 @@ class Transaction:
             elif kind == "financing":
                 if amount > 0 and nParcel > 0:
                     self.status = "aproved"
-                    self.financing.simulation(amount, nParcel)
+                    return self.financing.simulation(amount, nParcel)
             
             self.extract.generate(self.status, self._now(), kind, amount, self.client.balance)
         else:
