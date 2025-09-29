@@ -1,4 +1,3 @@
-# pages/2_Withdraw.py
 import streamlit as st
 from shared.utils import guard_login, minimal_css
 
@@ -22,4 +21,4 @@ if submit:
             st.error(f"Withdraw failed: {e}")
 
 st.markdown("---")
-st.caption("Withdraw • Minimal and clean form")
+st.caption("Withdraw for a good reason.")

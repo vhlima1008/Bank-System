@@ -1,13 +1,7 @@
-# app.py
 import io
 import sys
 from pathlib import Path
 import streamlit as st
-
-# --- If imports fail due to path issues, uncomment:
-# ROOT = Path(__file__).resolve().parent
-# if str(ROOT) not in sys.path:
-#     sys.path.append(str(ROOT))
 
 from app.core.transaction import Transaction
 from app.core.user import User
@@ -36,7 +30,7 @@ def make_user_and_tx(name: str, email: str, age: int):
 ensure_session()
 
 st.title("Digital Bank")
-st.caption("Minimal multipage Streamlit UI")
+st.caption("Minimal for make more.")
 
 if not st.session_state.logged:
     st.header("Login")
@@ -44,7 +38,7 @@ if not st.session_state.logged:
         col1, col2 = st.columns(2)
         with col1:
             name = st.text_input("Name", value="Victor")
-            age_str = st.text_input("Age", value="21")
+            age_str = st.text_input("Age", value="19")
         with col2:
             email = st.text_input("Email", value="victor@email.com")
             password = st.text_input("Password", type="password", value="123456")  # mock-only
@@ -84,4 +78,4 @@ else:
         st.rerun()
 
 st.markdown("---")
-st.caption("Home • Login / Logout • Use the sidebar to access pages.")
+st.caption("For start your jouney, use the sidebar.")

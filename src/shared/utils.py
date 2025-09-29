@@ -1,16 +1,13 @@
-# shared/utils.py
 import io
 import contextlib
 import streamlit as st
 
 def guard_login():
-    """Stop page execution if user is not logged in."""
     if not st.session_state.get("logged"):
         st.warning("You need to be logged in. Go to the Home page to login.")
         st.stop()
 
 def capture_print(fn, *args, **kwargs) -> str:
-    """Capture any stdout that a function prints and return it as text."""
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf):
         result = fn(*args, **kwargs)

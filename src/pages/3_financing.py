@@ -1,4 +1,3 @@
-# pages/3_Financing.py
 import streamlit as st
 from shared.utils import guard_login, capture_print, minimal_css
 
@@ -44,4 +43,4 @@ if submit:
             st.error(f"Financing execution failed: {e}")
 
 st.markdown("---")
-st.caption("Financing • Prints + structured result, when available")
+st.caption("Simulate your future financing.")

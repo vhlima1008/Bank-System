@@ -1,4 +1,3 @@
-# pages/0_Balance.py
 import streamlit as st
 from shared.utils import guard_login, minimal_css
 
@@ -9,7 +8,6 @@ guard_login()
 st.header("Balance")
 
 def _try_call(obj, name):
-    """Safely call obj.name() if exists and callable; otherwise return None."""
     fn = getattr(obj, name, None)
     if callable(fn):
         try:
@@ -19,7 +17,6 @@ def _try_call(obj, name):
     return None
 
 def _try_attr(obj, *names):
-    """Try a list of attribute names and return the first non-None value."""
     for n in names:
         if hasattr(obj, n):
             try:
@@ -31,15 +28,6 @@ def _try_attr(obj, *names):
     return None
 
 def get_current_balance():
-    """
-    Tries common patterns:
-      - tx.balance
-      - tx.get_balance()
-      - tx.client.balance
-      - tx.client.get_balance()
-      - tx.client.account / tx.client.current_balance
-    Returns (balance: float|None, source: str)
-    """
     tx = st.session_state.get("tx")
     if not tx:
         return None, "no transaction in session"
@@ -83,4 +71,4 @@ with col2:
 
 st.markdown("---")
 st.button("Refresh", on_click=lambda: None)
-st.caption("Balance • Minimal and clean • Reads from session Transaction/User")
+st.caption("See your balance evolution.")

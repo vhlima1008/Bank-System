@@ -1,4 +1,3 @@
-# pages/1_Deposit.py
 import streamlit as st
 from shared.utils import guard_login, minimal_css
 
@@ -22,4 +21,4 @@ if submit:
             st.error(f"Deposit failed: {e}")
 
 st.markdown("---")
-st.caption("Deposit • Minimal and clean form")
+st.caption("Deposit all you need.")
