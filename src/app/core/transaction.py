@@ -3,8 +3,6 @@ from .user import User # WHEN TESTING HERE USE: user (JUST) | REMEMBER TO PUT .u
 from .financing import Financing # WHEN TESTING HERE USE: financing (JUST) | REMEMBER TO PUT .financing AFTER END TESTS
 from .extract import Extract# WHEN TESTING HERE USE: extract (JUST) | REMEMBER TO PUT .extract AFTER END TESTS
 
-# Need to add an option to select the day for paying (or the current for default)
-
 DATE_FMT = "%Y-%m-%d %H:%M:%S"
 
 class Transaction:
