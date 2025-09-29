@@ -60,7 +60,7 @@ col1, col2 = st.columns([3, 1])
 with col1:
     if balance is not None:
         # Display as a metric (no currency symbol to avoid assumptions)
-        st.metric("Current Balance", f"{balance:,.2f}")
+        st.metric("Current Balance", f"R$ {balance:,.2f}")
     else:
         st.warning(
             "Balance not available. Ensure your domain exposes a balance field or method "

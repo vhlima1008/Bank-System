@@ -10,7 +10,7 @@ class Financing:
         cF = self.contractFee
         i = self.monthlyInterest
         n = nParcel
-        P = value * (i / (1 - (1 + i) ** (-n))) # PRICE Table (without secure)
+        P = value * (i / (1 - (1 + i) ** (-n))) # PRICE Table: P = (PV × i) / [1 – (1 + i)^-n] (from SENADO.gov)
 
         balance = value
         tPRICE = []
