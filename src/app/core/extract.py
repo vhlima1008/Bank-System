@@ -1,6 +1,6 @@
 from datetime import datetime
 
-# Need to add the date period organizing by day and the emission by day interval.
+# Need to add the date period organizing by day and the emission by day interval. [ok!]
 
 DATE_FMT = "%Y-%m-%d %H:%M:%S"
 
