@@ -10,7 +10,7 @@ class Financing:
         cF = self.contractFee
         i = self.monthlyInterest
         n = nParcel
-        P = value * (i / (1 - (1 + i) ** (-n))) # PRICE Table: P = (PV × i) / [1 – (1 + i)^-n] (from SENADO.gov)
+        P = value * (i / (1 - (1 + i) ** (-n))) # PRICE Table: P = (PV × i) / [1 – (1 + i)^-n] (from senado.gov)
 
         balance = value
         tPRICE = []
@@ -54,7 +54,7 @@ class Financing:
             "tablePRICE": tPRICE
         }
             
-    def _irr(self, cashFlows:List[float], tol:float=1e-7, maxIter:int=100):
+    def _irr(self, cashFlows:List[float], tol:float=1e-7, maxIter:int=100): # implemented based in: https://code.activestate.com/recipes/576686-npv-irr-payback-analysis/?utm_source=chatgpt.com
         low, high = -0.99, 2.0
 
         def npv(rate:float):
